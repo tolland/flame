@@ -12,11 +12,10 @@ class GameStatsBloc extends Bloc<GameStatsEvent, GameStatsState> {
       ),
     );
 
-    on<PlayerRespawned>(
-      (event, emit) => emit(
-        state.copyWith(status: GameStatus.respawned),
-      ),
-    );
+    on<PlayerRespawned>((event, emit) {
+      print("in PlayerRespawned in bloc handler");
+      emit(state.copyWith(status: GameStatus.respawned));
+    });
 
     on<PlayerDied>((event, emit) {
       if (state.lives > 1) {

@@ -22,6 +22,7 @@ class PlayerController extends Component
   void onNewState(GameStatsState state) {
     if (state.status == GameStatus.respawn ||
         state.status == GameStatus.initial) {
+      print("player respawned");
       game.statsBloc.add(const PlayerRespawned());
       parent?.add(game.player = PlayerComponent());
     }
