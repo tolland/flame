@@ -18,6 +18,7 @@ class GameStatsBloc extends Bloc<GameStatsEvent, GameStatsState> {
     });
 
     on<PlayerDied>((event, emit) {
+      print("in PlayerDied in bloc handler");
       if (state.lives > 1) {
         emit(
           state.copyWith(

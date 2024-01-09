@@ -11,6 +11,11 @@ import 'package:flame_bloc_example/src/inventory/bloc/inventory_bloc.dart';
 class GameStatsController extends Component
     with HasGameReference<SpaceShooterGame> {
   @override
+
+  GameStatsController() {
+    print("creating game stats controller - ${hashCode}");
+  }
+
   Future<void>? onLoad() async {
     add(
       FlameBlocListener<GameStatsBloc, GameStatsState>(

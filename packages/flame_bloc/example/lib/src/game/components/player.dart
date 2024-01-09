@@ -18,11 +18,15 @@ class PlayerController extends Component
     return previousState.status != newState.status;
   }
 
+  PlayerController() {
+  print("creating player controller - ${hashCode}");
+  }
+
   @override
   void onNewState(GameStatsState state) {
     if (state.status == GameStatus.respawn ||
         state.status == GameStatus.initial) {
-      print("player respawned");
+      print("player respawned on ${state.status} - ${hashCode}");
       game.statsBloc.add(const PlayerRespawned());
       parent?.add(game.player = PlayerComponent());
     }
@@ -41,6 +45,7 @@ class PlayerComponent extends SpriteAnimationComponent
   PlayerComponent()
       : super(size: Vector2(50, 75), position: Vector2(100, 500)) {
     bulletCreator = Timer(0.5, repeat: true, onTick: _createBullet);
+    print("creating PlayerComponent - ${hashCode}");
 
     add(RectangleHitbox());
   }
